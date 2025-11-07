@@ -48,14 +48,10 @@
 
         <button type="submit" class="btn-enviar">Enviar mensaje</button>
 
-        <p v-if="enviado" class="mensaje-exito">
-          ¡Gracias! Tu mensaje fue enviado correctamente.
-        </p>
+        <div v-if="notificacion" :class="['notificacion', notificacion.tipo]">
+          {{ notificacion.mensaje }}
+        </div>
       </form>
-      <div v-if="notificacion" :class="['notificacion', notificacion.tipo]">
-  {{ notificacion.mensaje }}
-</div>
-
     </div>
   </section>
 </template>
@@ -98,13 +94,11 @@ export default {
 
     mostrarNotificacion(mensaje, tipo) {
       this.notificacion = { mensaje, tipo };
-      setTimeout(() => (this.notificacion = null), 4000);
+      setTimeout(() => (this.notificacion = null), 2000); // desaparece en 2 segundos
     },
   },
 };
 </script>
-
-
 
 <style scoped>
 /* ==================== CONTACTO ==================== */
