@@ -76,32 +76,26 @@ export default {
     };
   },
   methods: {
-    async enviarFormulario() {
-      try {
-        const respuesta = await fetch("http://localhost:5001/enviar-correo", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(this.form),
-        });
+   async enviarFormulario() {
+  try {
+    const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/enviar-correo`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(this.form),
+    });
 
-        if (respuesta.ok) {
-          this.mostrarNotificacion("✅ ¡Gracias! Tu mensaje fue enviado correctamente.", "exito");
-          this.form = { nombre: "", telefono: "", email: "", servicio: "", mensaje: "" };
-        } else {
-          this.mostrarNotificacion("⚠️ Hubo un problema al enviar el formulario.", "error");
-        }
-      } catch (error) {
-        console.error("Error al enviar el formulario:", error);
-        this.mostrarNotificacion("🚫 Error al conectar con el servidor.", "error");
-      }
-    },
+    if (respuesta.ok) {
+      this.mostrarNotificacion("✅ ¡Gracias! Tu mensaje fue enviado correctamente.", "exito");
+      this.form = { nombre: "", telefono: "", email: "", servicio: "", mensaje: "" };
+    } else {
+      this.mostrarNotificacion("⚠️ Hubo un problema al enviar el formulario.", "error");
+    }
+  } catch (error) {
+    console.error("Error al enviar el formulario:", error);
+    this.mostrarNotificacion("🚫 Error al conectar con el servidor.", "error");
+  }
+},
 
-    mostrarNotificacion(mensaje, tipo) {
-      this.notificacion = { mensaje, tipo };
-      setTimeout(() => (this.notificacion = null), 4000);
-    },
-  },
-};
 </script>
 
 
