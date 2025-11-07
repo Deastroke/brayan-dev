@@ -1,4 +1,5 @@
 <template>
+
   <section id="contacto" class="contacto">
     <div class="container">
       <h2 class="titulo">Contacto</h2>
@@ -75,10 +76,11 @@ export default {
     async enviarFormulario() {
       try {
         const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/enviar-correo`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(this.form),
-        });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(this.form),
+});
+
 
         if (respuesta.ok) {
           this.mostrarNotificacion("✅ ¡Gracias! Tu mensaje fue enviado correctamente.", "exito");
@@ -94,7 +96,7 @@ export default {
 
     mostrarNotificacion(mensaje, tipo) {
       this.notificacion = { mensaje, tipo };
-      setTimeout(() => (this.notificacion = null), 2000); // desaparece en 2 segundos
+      setTimeout(() => (this.notificacion = null), 4000); // desaparece en 2 segundos
     },
   },
 };
