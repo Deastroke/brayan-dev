@@ -75,11 +75,13 @@ export default {
   methods: {
     async enviarFormulario() {
       try {
-        const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/api/enviar`, {
+      const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/api/enviar`, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(this.form),
 });
+
+
 
 
         if (respuesta.ok) {
