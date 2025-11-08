@@ -83,8 +83,6 @@ export default {
 
 
 
-
-
         if (respuesta.ok) {
           this.mostrarNotificacion(
             "✅ ¡Gracias! Tu mensaje fue enviado correctamente.",
